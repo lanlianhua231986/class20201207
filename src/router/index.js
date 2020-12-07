@@ -79,7 +79,7 @@ export const constantRoutes = [
         path: 'dashboard',
         component: () => import('@/views/dashboard/index'),
         name: 'Dashboard',
-        meta: { title: 'Dashboard', icon: 'dashboard', affix: true }
+        meta: { title: '首页', icon: 'dashboard', affix: true }
       }
     ]
   },
@@ -136,9 +136,9 @@ export const asyncRoutes = [
     alwaysShow: true, // will always show the root menu
     name: 'Permission',
     meta: {
-      title: 'Permission',
+      title: '权限',
       icon: 'lock',
-      roles: ['admin', 'editor'] // you can set roles in root nav
+      roles: ['editor','admin','super'] // you can set roles in root nav
     },
     children: [
       {
@@ -146,8 +146,8 @@ export const asyncRoutes = [
         component: () => import('@/views/permission/page'),
         name: 'PagePermission',
         meta: {
-          title: 'Page Permission',
-          roles: ['admin'] // or you can only set roles in sub nav
+          title: '权限111111',
+          roles: ['editor','admin'] // or you can only set roles in sub nav
         }
       },
       {
@@ -155,7 +155,8 @@ export const asyncRoutes = [
         component: () => import('@/views/permission/directive'),
         name: 'DirectivePermission',
         meta: {
-          title: 'Directive Permission'
+          title: '权限22222',
+          roles: ['editor']
           // if do not set roles, means: this page does not require permission
         }
       },
@@ -164,64 +165,188 @@ export const asyncRoutes = [
         component: () => import('@/views/permission/role'),
         name: 'RolePermission',
         meta: {
-          title: 'Role Permission',
+          title: '权限3333',
           roles: ['admin']
         }
       }
     ]
   },
 
-  {
-    path: '/icon',
-    component: Layout,
-    children: [
-      {
-        path: 'index',
-        component: () => import('@/views/icons/index'),
-        name: 'Icons',
-        meta: { title: 'Icons', icon: 'icon', noCache: true }
-      }
-    ]
-  },
+  // {
+  //   path: '/icon',
+  //   component: Layout,
+  //   children: [
+  //     {
+  //       path: 'index',
+  //       component: () => import('@/views/icons/index'),
+  //       name: 'Icons',
+  //       meta: { title: 'Icons', icon: 'icon', noCache: true }
+  //     }
+  //   ]
+  // },
 
   /** when your routing map is too long, you can split it into small modules **/
-  componentsRouter,
-  chartsRouter,
-  nestedRouter,
-  tableRouter,
+  // componentsRouter,
+  // chartsRouter,
+  // nestedRouter,
+  // tableRouter,
 
+  // {
+  //   path: '/example',
+  //   component: Layout,
+  //   redirect: '/example/list',
+  //   name: 'Example',
+  //   meta: {
+  //     title: 'Example',
+  //     icon: 'el-icon-s-help'
+  //   },
+  //   children: [
+  //     {
+  //       path: 'create',
+  //       component: () => import('@/views/example/create'),
+  //       name: 'CreateArticle',
+  //       meta: { title: 'Create Article', icon: 'edit' }
+  //     },
+  //     {
+  //       path: 'edit/:id(\\d+)',
+  //       component: () => import('@/views/example/edit'),
+  //       name: 'EditArticle',
+  //       meta: { title: 'Edit Article', noCache: true, activeMenu: '/example/list' },
+  //       hidden: true
+  //     },
+  //     {
+  //       path: 'list',
+  //       component: () => import('@/views/example/list'),
+  //       name: 'ArticleList',
+  //       meta: { title: 'Article List', icon: 'list' }
+  //     }
+  //   ]
+  // },
   {
-    path: '/example',
+    path: '/product',
     component: Layout,
-    redirect: '/example/list',
-    name: 'Example',
+    redirect: '/product/list',
+    name: 'product',
     meta: {
-      title: 'Example',
+      title: '产品模块',
       icon: 'el-icon-s-help'
     },
     children: [
       {
         path: 'create',
-        component: () => import('@/views/example/create'),
-        name: 'CreateArticle',
-        meta: { title: 'Create Article', icon: 'edit' }
+        component: () => import('@/views/product/create'),
+        name: 'Createproduct',
+        meta: { title: '添加产品', icon: 'edit' }
       },
       {
-        path: 'edit/:id(\\d+)',
-        component: () => import('@/views/example/edit'),
-        name: 'EditArticle',
-        meta: { title: 'Edit Article', noCache: true, activeMenu: '/example/list' },
+        path: 'edit/:id',
+        component: () => import('@/views/product/edit'),
+        name: 'Editproduct',
+        meta: { title: '修改产品', noCache: true, activeMenu: '/product/edit' },
         hidden: true
       },
       {
         path: 'list',
-        component: () => import('@/views/example/list'),
-        name: 'ArticleList',
-        meta: { title: 'Article List', icon: 'list' }
+        component: () => import('@/views/product/list'),
+        name: 'productList',
+        meta: { title: '产品列表',noCache: true, icon: 'list' }
       }
     ]
   },
-
+  {
+    path: '/user',
+    component: Layout,
+    redirect: '/user/list',
+    name: 'user',
+    meta: {
+      title: '用户模块',
+      icon: 'el-icon-s-help'
+    },
+    children: [
+      {
+        path: 'create',
+        component: () => import('@/views/user/create'),
+        name: 'Createuser',
+        meta: { title: '添加用户', icon: 'edit' }
+      },
+      {
+        path: 'edit/:id',
+        component: () => import('@/views/user/edit'),
+        name: 'Edituser',
+        meta: { title: '修改用户', noCache: true, activeMenu: '/user/edit' },
+        hidden: true
+      },
+      {
+        path: 'list',
+        component: () => import('@/views/user/list'),
+        name: 'userList',
+        meta: { title: '用户列表',noCache: true, icon: 'list' }
+      }
+    ]
+  },
+  {
+    path: '/city',
+    component: Layout,
+    redirect: '/city/list',
+    name: 'City',
+    meta: {
+      title: '城市模块',
+      icon: 'el-icon-s-help',
+      roles: ['admin','super','editor']
+    },
+    children: [
+      {
+        path: 'create',
+        component: () => import('@/views/city/create'),
+        name: 'CreateCity',
+        meta: { title: '添加城市', icon: 'edit',roles:['super'] }
+      },
+      {
+        path: 'edit/:id',
+        component: () => import('@/views/city/edit'),
+        name: 'EditCity',
+        meta: { title: '修改城市', noCache: true, activeMenu: '/city/edit',roles:['super'] },
+        hidden: true
+      },
+      {
+        path: 'list',
+        component: () => import('@/views/city/list'),
+        name: 'CityList',
+        meta: { title: '城市列表',noCache: true, icon: 'list',roles:['editor'] }
+      }
+    ]
+  },
+  {
+    path: '/movie',
+    component: Layout,
+    redirect: '/movie/list',
+    name: 'Movie',
+    meta: {
+      title: '电影模块',
+      icon: 'el-icon-s-help'
+    },
+    children: [
+      {
+        path: 'create',
+        component: () => import('@/views/movie/create'),
+        name: 'CreateMovie',
+        meta: { title: '添加电影',noCache: true, icon: 'edit' }
+      },
+      {
+        path: 'edit/:id',
+        component: () => import('@/views/movie/edit'),
+        name: 'EditMovie',
+        meta: { title: '修改电影', noCache: true, activeMenu: '/movie/edit' },
+        hidden: true
+      },
+      {
+        path: 'list',
+        component: () => import('@/views/movie/list'),
+        name: 'MovieList',
+        meta: { title: '电影列表',noCache: true, icon: 'list' }
+      }
+    ]
+  },
   {
     path: '/tab',
     component: Layout,

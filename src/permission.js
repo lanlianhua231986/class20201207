@@ -29,7 +29,7 @@ router.beforeEach(async(to, from, next) => {
       // determine whether the user has obtained his permission roles through getInfo
       const hasRoles = store.getters.roles && store.getters.roles.length > 0
       if (hasRoles) {
-        next()
+        next()   //因为有同步路由和异步路由
       } else {
         try {
           // get user info
@@ -37,6 +37,7 @@ router.beforeEach(async(to, from, next) => {
           const { roles } = await store.dispatch('user/getInfo')
 
           // generate accessible routes map based on roles
+          // 生成异步路由
           const accessRoutes = await store.dispatch('permission/generateRoutes', roles)
 
           // dynamically add accessible routes

@@ -44,7 +44,7 @@ const actions = {
     })
   },
 
-  // get user info
+  // get user info  拉取用户信息
   getInfo({ commit, state }) {
     return new Promise((resolve, reject) => {
       getInfo(state.token).then(response => {
